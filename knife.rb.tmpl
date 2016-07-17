@@ -1,0 +1,93 @@
+current_dir = File.dirname(__FILE__)
+
+knife_org = ENV['KNIFE_ORG']
+if knife_org.nil?
+  STDERR.puts 'Set KNIFE_ORG environment variable to the organization name'
+  exit 1
+end
+knife_val = ENV['KNIFE_VAL']
+if knife_val.nil?
+  knife_val_path = ENV['KNIFE_VAL_PATH']
+  if knife_val_path.nil?
+    STDERR.puts 'Set KNIFE_VAL environment variable to the validator key file, or KNIFE_VAL_PATH to its path'
+    exit 1
+  else
+    knife_val = knife_val_path.split("/")[-1].split(".")[0]
+  end
+else
+  knife_val_path = "#{current_dir}/#{ENV['KNIFE_VAL']}.pem"
+end
+knife_url = ENV['KNIFE_URL']
+if knife_url.nil?
+  STDERR.puts 'Set KNIFE_URL environment variable to the chef server url'
+  exit 1
+end
+cloudstack_url = ENV['CLOUDSTACK_URL']
+if cloudstack_url.nil?
+  STDERR.puts 'WARNING: CLOUDSTACK_UTL not set, using default (betacloud)'
+  cloudstack_url = 'https://betacloud.example.com/client/api'
+end
+cloudstack_api_key = ENV['CLOUDSTACK_API_KEY']
+if cloudstack_api_key.nil?
+  STDERR.puts 'WARNING: CLOUDSTACK_API_KEY not set, `knife cs` commands will not work'
+end
+cloudstack_secret_key = ENV['CLOUDSTACK_SECRET_KEY']
+if cloudstack_secret_key.nil?
+  STDERR.puts 'WARNING: CLOUDSTACK_SECRET_KEY not set, `knife cs` commands will not work'
+end
+
+cbp = ENV['KNIFE_CBP']
+if cbp.nil?
+  cbp = "#{current_dir}/../cookbooks"
+  STDERR.puts "WARNING: KNIFE_CBP not set, using #{cbp}"
+end
+
+user = ENV['OPSCODE_USER'] || ENV['USER']
+knife_client_key = ENV['CLIENT_KEY'] || "#{current_dir}/#{user}_#{knife_org}.pem"
+
+# STDERR.puts "current_dir = #{current_dir}"
+# STDERR.puts "knife_org = #{knife_org}"
+# STDERR.puts "knife_val = #{knife_val}"
+# STDERR.puts "knife_val_path = #{knife_val_path}"
+# STDERR.puts "knife_url = #{knife_url}"
+# STDERR.puts "knife_client_key = #{knife_client_key}"
+# STDERR.puts "cbp = #{cbp}"
+
+
+# See http://docs.opscode.com/config_rb_knife.html for more information on knife configuration options
+log_level                       :info
+log_location                    STDOUT
+node_name                       user
+client_key                      knife_client_key
+validation_client_name          knife_val
+validation_key                  knife_val_path
+chef_server_url                 knife_url
+cache_type                      'BasicFile'
+cache_options                   :path => "#{ENV['HOME']}/.chef/checksums"
+cookbook_path                   cbp
+
+STDERR.puts 'WARNING: change some standard settings in your ~/.chef/knife.rb'
+
+cookbook_copyright              'Acme B.V.'
+cookbook_email                  'me@example.com'
+# cookbook_license                'none'
+
+# knife cs (knife-cloudstack)
+knife[:cloudstack_url]          = cloudstack_url
+knife[:cloudstack_api_key]      = cloudstack_api_key
+knife[:cloudstack_secret_key]   = cloudstack_secret_key
+
+# knife cloudstack (knife-cloudstack-fog)
+knife[:cloudstack_access_key_id]     = cloudstack_api_key
+knife[:cloudstack_secret_access_key] = cloudstack_secret_key
+knife[:cloudstack_api_endpoint]      = cloudstack_url
+
+knife[:vault_mode]              = 'client'
+
+knife[:github_url]              = 'https://github.com'
+knife[:github_link]             = 'ssh'
+knife[:github_organizations]    = [user]
+
+knife[:github_api_version]      = 'v3'
+knife[:github_ssl_verify_mode]  = 'verify_none'
+knife[:github_token]            = 'fixme'
