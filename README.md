@@ -46,3 +46,6 @@ A: For fun. Obviously you're much better of with some of the stuff from https://
 
 Q: What if <X> doesn't work?
 A: fix it. I may or may not look at a pull request if you send one.
+
+Q: Why did you copy/paste some files rather than download/depend on them properly?
+A: Life's too short. Worried they might end up 'gone'.

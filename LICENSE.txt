@@ -1,3 +1,7 @@
+.git-prompt.sh is licensed under the GPL, details in the file itself.
+
+Everything else:
+
 Copyright 2009-2016 Homebrew contributors.
 
 Redistribution and use in source and binary forms, with or without
