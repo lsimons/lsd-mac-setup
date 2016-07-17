@@ -41,11 +41,11 @@ Post-install more manual setup!
 
 FAQ
 ===
-Q: Why didn't you use an existing dotfiles or home dir management system from someone else?
-A: For fun. Obviously you're much better of with some of the stuff from https://dotfiles.github.io/ .
+* *Q:* Why didn't you use an existing dotfiles or home dir management system from someone else?
+* *A:* For fun. Obviously you're much better off with some of the stuff from https://dotfiles.github.io/ .
 
-Q: What if <X> doesn't work?
-A: fix it. I may or may not look at a pull request if you send one.
+* *Q:* What if "X" doesn't work?
+* *A:* fix it. I may or may not look at a pull request if you send one.
 
-Q: Why did you copy/paste some files rather than download/depend on them properly?
-A: Life's too short. Worried they might end up 'gone'.
+* *Q:* Why did you copy/paste some files rather than download/depend on them properly?
+* *A:* Life's too short. Worried they might end up 'gone'.
