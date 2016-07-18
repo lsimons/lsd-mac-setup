@@ -14,12 +14,10 @@ curl -o startcom-intermediate.crt https://www.startssl.com/certs/ca-sha2.crt
 
 for v in 1.7 1.8; do
   java_home=$(/usr/libexec/java_home -v $v)
-  root_existing=$(${java_home}/bin/keytool -list -noprompt -keystore ${java_home}/jre/lib/security/cacerts -storepass changeit | grep -i StartCom_Root)
-  if [[ "${root_existing}" == "" ]]; then
+  if [[ "$(${java_home}/bin/keytool -list -noprompt -keystore ${java_home}/jre/lib/security/cacerts -storepass changeit | grep -i StartCom_Root)" == "" ]]; then
     sudo ${java_home}/bin/keytool -import -noprompt -keystore ${java_home}/jre/lib/security/cacerts -storepass changeit -trustcacerts -file startcom-ca.crt -alias StartCom_Root
   fi
-  intermediate_existing=$(${java_home}/bin/keytool -list -noprompt -keystore ${java_home}/jre/lib/security/cacerts -storepass changeit | grep -i StartCom_Intermediate)
-  if [[ "${intermediate_existing}" == "" ]]; then
+  if [[ "$(${java_home}/bin/keytool -list -noprompt -keystore ${java_home}/jre/lib/security/cacerts -storepass changeit | grep -i StartCom_Intermediate)" == "" ]]; then
     sudo ${java_home}/bin/keytool -import -noprompt -keystore ${java_home}/jre/lib/security/cacerts -storepass changeit -file startcom-intermediate.crt -alias StartCom_Intermediate
   fi
 done

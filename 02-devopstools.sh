@@ -10,8 +10,7 @@ brew cask install virtualbox
 brew cask install vagrant
 
 for p in vagrant-cachier vagrant-omnibus vagrant-berkshelf vagrant-cloudstack vagrant-chef-zero; do
-  exists=$(vagrant plugin list | grep $p)
-  if [[ "$exists" == "" ]]; then
+  if [[ "$(vagrant plugin list | grep $p)" == "" ]]; then
     vagrant plugin install $p
   fi
 done
