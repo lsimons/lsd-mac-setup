@@ -4,9 +4,7 @@
 
 brew analytics off
 brew doctor
-brew update
 
-brew install caskroom/cask/brew-cask
-
+brew tap caskroom/cask
 brew tap homebrew/versions
 brew tap caskroom/versions
