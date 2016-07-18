@@ -46,9 +46,11 @@ export EDITOR="/usr/local/bin/atom --wait"
 export SVN_EDITOR="/usr/local/bin/atom -wait"
 
 ### autocompletion
-complete -W "$(echo $(cat ~/.ssh/known_hosts | \
-  cut -f 1 -d ' ' | sed -e s/,.*//g | \
-  sort -u | grep -v "\["))" ssh
+if [ -f ~/.ssh/known_hosts ]; then
+  complete -W "$(echo $(cat ~/.ssh/known_hosts | \
+    cut -f 1 -d ' ' | sed -e s/,.*//g | \
+    sort -u | grep -v "\["))" ssh
+fi
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion

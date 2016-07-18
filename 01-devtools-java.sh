@@ -4,9 +4,6 @@
 
 set -e
 
-brew tap homebrew/versions
-brew tap caskroom/versions
-
 brew cask install java jce-unlimited-strength-policy
 
 brew cask install Caskroom/versions/java7

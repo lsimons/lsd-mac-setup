@@ -5,19 +5,20 @@ Prerequisite software setup
 You first need the basic development and scripting tools.
 
 * run software update
+  * `sudo softwareupdate -i -a`
 * install XCode via the App Store
-* install [xcode command line tools](http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools)
+  * note you _can_ install homebrew and the rest of the below _while_ downloading/installing XCode, but at some point something probably won't work until you do
+* installing [xcode command line tools](http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools) by hand seems unneeded on 10.11, homebrew takes care of what it needs. On older mac os x versions it may still be required:
   * `xcode-select --install`
+  * `sudo xcodebuild -license`
 * install [homebrew](http://brew.sh/)
   * `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-  * `brew doctor; brew update`
-* install [cask](http://caskroom.io/)
-  * `brew install caskroom/cask/brew-cask`
 
 Usage
 =====
 Don't be a lazy bastard and do this:
 
+* `cd ~; mkdir dev; cd dev`
 * `git clone git@github.com:lsimons/lsd-mac-setup.git`
 * `cd lsd-mac-setup`
 * `./install.sh`
