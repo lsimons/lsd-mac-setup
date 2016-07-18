@@ -6,7 +6,7 @@ set -e
 
 brew install mysql
 
-brew services stop mysql
+(brew services stop mysql || true)
 
 cat >/usr/local/etc/my.cnf <<END
 [mysqld]
