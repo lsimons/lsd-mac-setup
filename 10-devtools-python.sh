@@ -4,7 +4,7 @@
 
 set -e
 
-for p in 3.5.2 2.7.12; do
+for p in 3.6.1 2.7.13; do
   pyenv install --skip-existing $p
   pyenv global $p
   pip install --upgrade pip
