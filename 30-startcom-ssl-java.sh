@@ -4,8 +4,8 @@
 
 set -e
 
-curl -o startcom-ca.crt https://www.startssl.com/certs/ca.crt
-curl -o startcom-intermediate.crt https://www.startssl.com/certs/ca-sha2.crt
+curl -L -o startcom-ca.crt https://www.startssl.com/certs/ca.crt
+curl -L -o startcom-intermediate.crt https://www.startssl.com/certs/ca-sha2.crt
 
 # doesn't work, but java 1.6 SSL is too old for use anyway
 # java_home=$(/usr/libexec/java_home -v 1.6)
