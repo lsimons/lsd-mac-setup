@@ -16,7 +16,7 @@ brew cask install vagrant
 # /opt/vagrant/embedded/bin/gem install nokogiri -v '1.8.0' --install-dir ~/.vagrant.d/gems -- --use-system-libraries
 # /opt/vagrant/embedded/bin/gem install nokogiri -v '1.8.0' --install-dir ~/.vagrant.d/gems/2.2.5 -- --use-system-libraries
 
-for p in vagrant-cachier vagrant-omnibus vagrant-berkshelf vagrant-cloudstack vagrant-chef-zero; do
+for p in vagrant-cachier vagrant-omnibus vagrant-berkshelf vagrant-cloudstack vagrant-chef-zero vagrant-winrm; do
   if [[ "$(vagrant plugin list | grep $p)" == "" ]]; then
     vagrant plugin install $p
   fi
