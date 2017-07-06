@@ -40,8 +40,8 @@ export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
 export PERL5LIB=/Users/lsimons/perl5/lib/perl5
 
 ### editor
-alias mate=atom
-alias subl=atom
+alias mate=subl
+alias atom=subl
 export EDITOR="/usr/local/bin/atom --wait"
 export SVN_EDITOR="/usr/local/bin/atom -wait"
 
