@@ -4,7 +4,13 @@
 
 set -e
 
-brew cask install java jce-unlimited-strength-policy
+brew cask install java
+# brew cask install jce-unlimited-strength-policy
+# /Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/conf/security/java.security
+# already has crypto.policy = unlimited
+
+brew cask install Caskroom/versions/java8
+brew cask install jce-unlimited-strength-policy8
 
 brew cask install Caskroom/versions/java7
 brew cask install ./jce-unlimited-strength-policy7.rb
@@ -41,7 +47,7 @@ ensure_tools_jar() {
   cd $PWD
 }
 
-for v in 1.6 1.7 1.8; do
+for v in 1.6 1.7 1.8 9; do
   java_home=$(/usr/libexec/java_home -v $v)
   ensure_tools_jar $java_home
   if [[ "$(jenv versions | grep $v)" == "" ]]; then
