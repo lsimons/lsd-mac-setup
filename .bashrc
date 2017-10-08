@@ -32,6 +32,8 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export JENV_ROOT=/usr/local/opt/jenv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+
 export MAVEN_OPTS="-Xmx1024m"
 # -Xdebug -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n"
 

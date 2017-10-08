@@ -5,7 +5,7 @@
 set -e
 
 # environment management
-brew install bash-completion direnv pyenv jenv rbenv ruby-build
+brew install bash-completion direnv pyenv jenv rbenv nodenv ruby-build
 
 # key libraries used by other brew stuff
 brew install gettext libnet libtool libxml2 libxslt libyaml openssl readline
